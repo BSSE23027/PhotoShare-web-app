@@ -1,0 +1,18 @@
+{% load static %}
+<html lang="en">
+<link rel="stylesheet" href="{% static 'myglobal.css' %}">
+<body>
+
+
+{% with name="Tobias" %}
+    <h1>{{ name }} {{ hardcode }}</h1>
+{% endwith %}
+
+<ul>
+{% for x in object %}
+    <li>{{ x.firstname }} {{ x.lastname }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

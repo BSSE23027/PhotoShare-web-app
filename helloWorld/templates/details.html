@@ -1,0 +1,44 @@
+
+{% extends "Master.html" %}
+{% block title %}
+    Details
+{% endblock %}
+
+{% block content %}
+
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <section class="mb-4">
+            <div class="p-3 rounded" style="background-color: #e6ffe6;">
+                <h2 class="h5">Welcome, <span class="text-success">{{ mymember.firstname }} {{ mymember.lastname }}</span>!</h2>
+                <h2 class="h5">Phone: <span class="text-success">{{ mymember.phone }}</span></h2>
+                <h2 class="h5">Email: <span class="text-success">{{ mymember.email }}</span></h2>
+                <a href="{% url 'upload_product_images' mymember.id %}" class="btn btn-primary mt-2">Upload More Images</a>
+            </div>
+        </section>
+
+        <h4 class="mt-5">{{ mymember.firstname }} {{ mymember.lastname }}'s Images</h4>
+        {% if mymember.images.all %}
+        <div class="card" style="height: 330px; overflow-y: auto;">
+            <div class="card-body">
+                <div class="row g-3">
+                    {% for image in images %}
+                    <div class="col-6 col-md-4">
+                        <div class="card">
+                            <img src="{{ image.image.url }}" class="img-thumbnail" alt="Image">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-muted mt-3">No images uploaded yet.</p>
+        {% endif %}
+
+
+{% endblock %}
