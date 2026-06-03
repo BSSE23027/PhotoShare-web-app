@@ -12,7 +12,7 @@ from .forms import ProductImageForm, SignupForm, LoginForm, ProfilePictureForm, 
 from django.core.mail import send_mail
 import time
 import google.generativeai as genai
-GEMINI_API_KEY = "AIzaSyBmbyMdAb5Mnj3_y7c1MqUind738_eeimw"
+GEMINI_API_KEY = "My_API_Key"
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-2.0-flash")
 
